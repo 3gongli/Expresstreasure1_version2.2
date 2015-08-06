@@ -47,6 +47,7 @@ import com.testin.agent.TestinAgent;
 import com.umeng.analytics.MobclickAgent;
 
 public class Login_activity extends Activity {
+	// 1111111
 	EditText pass, phone;
 	private TextView textView_version;
 	Button btn;
