@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.expresstreasure" 
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Black.NoTitleBar" >
+		<meta-data android:value="55b1a7a9e0f55a4f98005d8a" android:name="UMENG_APPKEY"></meta-data>
+		<meta-data android:value="Wandoujia" android:name="UMENG_CHANNEL"/>
+		<!-- 设置AppKey -->
+        <meta-data android:name="TESTIN_APPKEY" android:value="Your_AppKey"/>
+        <!-- 设置渠道信息 -->
+        <meta-data android:name="TESTIN_CHANNEL" android:value="Channel_ID"/>
+
+        <activity
+            android:name="com.expresstreasure.activity.MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.dtr.zxing.activity.CaptureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.dtr.zxing.activity.ResultActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
+        <activity
+            android:name="com.expresstreasure.activity.StartIndex"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.expresstreasure.activity.Es_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.expresstreasure.activity.O2O_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.expresstreasure.activity.My_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.expresstreasure.activity.Estake_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.expresstreasure.activity.Login_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.expresstreasure.activity.Essign_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.expresstreasure.activity.Error_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.expresstreasure.activity.O2OSend_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.expresstreasure.activity.O2OSendover_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.expresstreasure.activity.O2OWaitsend_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.expresstreasure.activity.Statistical_activity"
+            android:screenOrientation="portrait" />
+        <service android:name="com.expresstreasure.activity.LocationService">
+			<intent-filter>
+				<action android:name="com.expresstreasure.activity.LocationService" />
+				<category android:name="android.intent.category.default" />
+			</intent-filter>
+		</service>
+    </application>
+
+</manifest>

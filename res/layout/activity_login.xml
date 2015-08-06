@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/login_bg" >
+
+    <TextView 
+         android:layout_width="wrap_content"
+    	 android:layout_height="40dp"
+    	 android:text="快送宝-配送员版"
+    	 android:layout_centerHorizontal="true"
+    	 android:layout_marginTop="60dp"
+    	 android:textColor="@color/text_6c6c6c"
+    	 android:textSize="22sp"
+        />
+    
+    
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
+        android:background="@color/login_button_color"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:text="登录" />
+    <RelativeLayout
+        android:id="@+id/login_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/submit"
+        android:layout_marginBottom="20dp" >
+        <LinearLayout
+            android:id="@+id/txt_phonenum"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="22dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="22dp"
+                android:text="手机号"
+                android:textColor="@color/login_text_color"
+                android:textSize="16dp" />
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="请输入手机号"
+                android:maxLength="15"
+                android:textColor="@color/login_text_color"
+                android:numeric="integer"
+                android:textSize="16sp" >
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/txt_psd"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/txt_phonenum"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="22dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="22dp"
+                android:text="密	 码"
+                android:textColor="@color/login_text_color"
+                android:textSize="16dp" />
+            <EditText
+                android:id="@+id/psd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:password="true"
+                android:hint="请输入密码"
+                android:textColor="@color/login_text_color"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </RelativeLayout>
+    <TextView 
+        android:id="@+id/textView_version"
+        android:text="版本号V2.0(测试版)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/submit"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        
+        />
+
+</RelativeLayout>

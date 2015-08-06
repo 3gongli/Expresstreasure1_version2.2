@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/login_bg" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp" >
+
+        <include
+            android:id="@+id/title"
+            layout="@layout/titlemy" />
+
+        <RelativeLayout
+            android:id="@+id/px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/app_name" >
+
+            <ImageView
+                android:id="@+id/px_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/user" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/px_icon"
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="姓名:"
+                        android:textColor="@color/btn_bottom_textbgcolor"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/realname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="10dp"
+                        android:text=""
+                        android:textColor="@color/btn_bottom_textbgcolor"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="用户名:"
+                        android:textColor="@color/btn_bottom_textbgcolor"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:singleLine="true"
+                        android:text=""
+                        android:textColor="@color/btn_bottom_textbgcolor"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="手机号:"
+                        android:textColor="@color/btn_bottom_textbgcolor"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:singleLine="true"
+                        android:text=""
+                        android:textColor="@color/btn_bottom_textbgcolor"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/start"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:gravity="center_vertical"
+                android:text="三星"
+                android:textColor="@color/btn_bottom_textbgcolor"
+                android:textSize="16sp"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/px"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/saomiao_button_selector"
+            android:gravity="center"
+            android:text="注销"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cancel"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/state"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="状态 :开工啦!"
+                android:textColor="@color/text_blue"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/stop_work"
+                android:layout_width="170dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/startstop_work_button_selector"
+                android:text="收工" />
+
+            <Button
+                android:id="@+id/start_work"
+                android:layout_width="170dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/startstop_work_button_selector"
+                android:text="开工" />
+
+            <Button
+                android:id="@+id/exit"
+                android:layout_width="170dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/saomiao_button_selector"
+                android:text="退出" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

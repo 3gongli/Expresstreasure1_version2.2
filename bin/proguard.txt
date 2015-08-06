@@ -1,0 +1,53 @@
+# view AndroidManifest.xml #generated:58
+-keep class com.dtr.zxing.activity.CaptureActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:63
+-keep class com.dtr.zxing.activity.ResultActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:95
+-keep class com.expresstreasure.activity.Error_activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:77
+-keep class com.expresstreasure.activity.Es_activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:92
+-keep class com.expresstreasure.activity.Essign_activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:86
+-keep class com.expresstreasure.activity.Estake_activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:110
+-keep class com.expresstreasure.activity.LocationService { <init>(...); }
+
+# view AndroidManifest.xml #generated:89
+-keep class com.expresstreasure.activity.Login_activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:54
+-keep class com.expresstreasure.activity.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:83
+-keep class com.expresstreasure.activity.My_activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:98
+-keep class com.expresstreasure.activity.O2OSend_activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:101
+-keep class com.expresstreasure.activity.O2OSendover_activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:104
+-keep class com.expresstreasure.activity.O2OWaitsend_activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:80
+-keep class com.expresstreasure.activity.O2O_activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:67
+-keep class com.expresstreasure.activity.StartIndex { <init>(...); }
+
+# view AndroidManifest.xml #generated:107
+-keep class com.expresstreasure.activity.Statistical_activity { <init>(...); }
+
+# view res/layout/activity_es_take.xml #generated:2
+# view res/layout/activity_o2o_list.xml #generated:2
+# view res/layout/activity_sign_list.xml #generated:9
+-keep class com.handmark.pulltorefresh.library.PullToRefreshListView { <init>(...); }
+

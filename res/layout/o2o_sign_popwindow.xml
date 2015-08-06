@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:background="@color/dialog_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/layout_sign"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:visibility="visible" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text="应收客户:"
+                android:textColor="@color/login_text_color"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/cargo_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text="实收客户:"
+                android:textColor="@color/login_text_color"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tprice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text="15元"
+                android:textColor="@color/login_text_color"
+                android:textSize="14sp" />
+
+            <TextView
+                 android:id="@+id/true_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text="5元"
+                android:textColor="@color/login_text_color"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/layout_error"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="此件为异常件，请妥善处理"
+        android:textColor="@drawable/top_scan_text_selector" />
+
+    <TextView
+        android:id="@+id/ok"
+        android:layout_width="60dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/saomiao_button_selector"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@drawable/top_scan_text_selector" />
+
+</LinearLayout>

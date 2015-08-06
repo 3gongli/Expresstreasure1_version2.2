@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="btn_bottom_textbgcolor">#1f6299</color>
+    <color name="btn_bottom_bgcolor">#cccccc	</color>
+    <color name="view_color">#d9d9d9</color>
+    <color name="praise_content_color">#0091e5</color>
+    <color name="title_bgcolor">#fafafa</color>
+    <color name="login_bg">#e6e6e6</color>
+    <color name="white">#ffffff</color>
+    <color name="login_text_color">#6b6b6b</color>
+    <color name="login_button_color">#0091e5</color>
+    <color name="text_4c4c4c">#4c4c4c</color>
+    <color name="text_6c6c6c">#6c6c6c</color>
+    <color name="dialog_bg">#f0f0f0</color>
+    <color name="red">#ff0000</color>
+    <color name="text_blue">#0091e5</color>
+    <color name="black">#000000</color>
+    <color name="black_202020">#202020</color>
+    <color name="black_868686">#868686</color>
+    <color name="orange">#FFA200</color>
+    <color name="yellow">#FFD800</color>
+    <color name="online_text_ng">#007EFF</color>
+    <color name="sign_text_bg">#828282</color>
+    <color name="saomiao_bg">#F0F0F0</color>
+
+</resources>
