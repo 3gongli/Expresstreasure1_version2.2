@@ -140,6 +140,7 @@ public class Jsontool {
 		DataManger.instance.setTotal_buyer_fees(data
 				.getString("total_buyer_fees"));
 		DataManger.instance.setTotal_pay_fees(data.getString("total_pay_fees"));
-		DataManger.instance.setAverage_time(data.getString("average_time"));
+		DataManger.instance.setTotal_goods_fee(data.getString("total_price"));
+		// DataManger.instance.setAverage_time(data.getString("average_time"));
 	}
 }

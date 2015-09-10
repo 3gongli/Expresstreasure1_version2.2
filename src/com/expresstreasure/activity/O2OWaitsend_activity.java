@@ -149,6 +149,7 @@ public class O2OWaitsend_activity extends ListActivity {
 										DataManger dt;
 										Map<String, Object> map = new HashMap<String, Object>();
 										dt = dtli.get(i);
+										map.put("goods_id", dt.getId());
 										map.put("shipper_address",
 												dt.getShipper_address());
 										map.put("shipper_phone",
@@ -163,8 +164,9 @@ public class O2OWaitsend_activity extends ListActivity {
 												dt.getBuyer_address());
 										map.put("remarks", dt.getRemarks());
 										map.put("goods_type",
-												dt.getIs_booking());
-										map.put("goods_num", dt.getGoods_num());
+												dt.getGoods_type());
+										map.put("goods_num",
+												dt.getCargo_price());
 										map.put("total_num", dt.getTotal_num());
 										map.put("create_time",
 												dt.getCreate_time());
@@ -274,6 +276,8 @@ public class O2OWaitsend_activity extends ListActivity {
 				// 根据自定义的Item布局加载布局
 				convertView = mInflater.inflate(
 						R.layout.activity_o2owaitsend_list_item, null);
+				holder.num = (TextView) convertView
+						.findViewById(R.id.tv_goods_id);
 				holder.shipper_address = (TextView) convertView
 						.findViewById(R.id.shipper_address);
 				holder.shipper_name_phone = (TextView) convertView
@@ -313,6 +317,8 @@ public class O2OWaitsend_activity extends ListActivity {
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
+
+			holder.num.setText((String) data.get(position).get("goods_id"));
 			holder.shipper_address.setText((String) data.get(position).get(
 					"shipper_address"));
 			String shipper_name_phone = (String) data.get(position).get(

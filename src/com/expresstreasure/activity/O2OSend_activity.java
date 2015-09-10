@@ -153,6 +153,7 @@ public class O2OSend_activity extends ListActivity {
 										Map<String, Object> map = new HashMap<String, Object>();
 
 										dt = dtli.get(i);
+										map.put("goods_id", dt.getId());
 										map.put("shipper_address",
 												dt.getShipper_address());
 										map.put("shipper_phone",
@@ -168,7 +169,8 @@ public class O2OSend_activity extends ListActivity {
 										map.put("remarks", dt.getRemarks());
 										map.put("goods_type",
 												dt.getGoods_type());
-										map.put("goods_num", dt.getGoods_num());
+										map.put("goods_num",
+												dt.getCargo_price());
 										map.put("total_num", dt.getTotal_num());
 										map.put("create_time",
 												dt.getCreate_time());
@@ -281,6 +283,8 @@ public class O2OSend_activity extends ListActivity {
 				// 根据自定义的Item布局加载布局
 				convertView = mInflater.inflate(
 						R.layout.activity_o2osend_list_item, null);
+				holder.goods_id = (TextView) convertView
+						.findViewById(R.id.tv_goods_id);
 				holder.shipper_address = (TextView) convertView
 						.findViewById(R.id.shipper_address);
 				holder.shipper_name_phone = (TextView) convertView
@@ -324,9 +328,11 @@ public class O2OSend_activity extends ListActivity {
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
+
+			holder.goods_id
+					.setText((String) data.get(position).get("goods_id"));
 			holder.shipper_address.setText((String) data.get(position).get(
 					"shipper_address"));
-
 			String shipper_name_phone = (String) data.get(position).get(
 					"shipper_name")
 					+ (String) data.get(position).get("shipper_phone");
@@ -507,6 +513,8 @@ public class O2OSend_activity extends ListActivity {
 
 		// ViewHolder静态类
 		class ViewHolder {
+			TextView goods_id;
+
 			TextView shipper_address; // 发货商家地址
 			TextView shipper_name_phone; // 发货商家名称和电话
 			// TextView buyer_name_phone; // 收货人名称和电话

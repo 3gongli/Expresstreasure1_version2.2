@@ -60,6 +60,15 @@ public class DataManger {
 	private String total_pay_fees;// 上缴费用
 	private String total_waybill;// 总单数
 	private String average_time;// 平均配送时间
+	private String total_goods_fee;
+
+	public String getTotal_goods_fee() {
+		return total_goods_fee;
+	}
+
+	public void setTotal_goods_fee(String total_goods_fee) {
+		this.total_goods_fee = total_goods_fee;
+	}
 
 	// 每天统计电商
 	private String today_es_take = "0";// 电商取件配送
