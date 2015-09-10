@@ -23,6 +23,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
@@ -34,6 +35,7 @@ import com.expresstreasure.R;
 import com.expresstreasure.tils.DataManger;
 import com.expresstreasure.tils.Httptool;
 import com.expresstreasure.tils.Jsontool;
+import com.expresstreasure.tils.SharePrefUtil;
 import com.expresstreasure.tils.Urllist;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
@@ -144,7 +146,7 @@ public class O2OSendover_activity extends ListActivity {
 										map.put("shipper_phone",
 												dt.getShipper_phone());
 										map.put("shipper_name",
-												dt.getShipper_name() + "/");
+												dt.getShipper_name());
 										map.put("buyer_name",
 												dt.getBuyer_name() + "/");
 										map.put("buyer_phone",
@@ -159,16 +161,10 @@ public class O2OSendover_activity extends ListActivity {
 												dt.getGoods_type());
 										map.put("create_time",
 												dt.getCreate_time());
-										// map.put("cargo_price",
-										// dt.getCargo_price());
-										// map.put("fetch_buyer_fee",
-										// dt.getFetch_buyer_fee());
-										// map.put("pay_shipper_fee",
-										// dt.getPay_shipper_fee());
-										// map.put("distance",
-										// dt.getDistance());
-										// map.put("waybill_status",
-										// dt.getWaybill_status());
+										map.put("id", dt.getId());
+
+										map.put("sp_x", dt.getSp_x());
+										map.put("sp_y", dt.getSp_y());
 										li.add(map);
 									}
 									TotalNum = String
@@ -249,7 +245,8 @@ public class O2OSendover_activity extends ListActivity {
 		// data set.
 		// 获取一个在数据集中指定索引的视图来显示数据
 		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
+		public View getView(final int position, View convertView,
+				ViewGroup parent) {
 			// TODO Auto-generated method stub
 			ViewHolder holder;
 			// 如果缓存convertView为空，则需要创建View
@@ -280,18 +277,8 @@ public class O2OSendover_activity extends ListActivity {
 						.findViewById(R.id.linearLayout_sender_name_phone);
 				holder.linearLayout_maijia_address = (LinearLayout) convertView
 						.findViewById(R.id.linearLayout_maijia_address);
-				// holder.cargo_price = (TextView) convertView
-				// .findViewById(R.id.cargo_price);
-				// holder.pay_shipper_fee = (TextView) convertView
-				// .findViewById(R.id.pay_shipper_fee);
-				// holder.fetch_buyer_fee = (TextView) convertView
-				// .findViewById(R.id.fetch_buyer_fee);
-				// holder.waybill_status = (TextView) convertView
-				// .findViewById(R.id.waybill_status);
-				// holder.distance = (TextView) convertView
-				// .findViewById(R.id.distance);
-				// holder.order_time = (TextView) convertView
-				// .findViewById(R.id.order_time);
+				holder.complete_info = (TextView) convertView
+						.findViewById(R.id.complete_info);
 				// 将设置好的布局保存到缓存中，并将其设置在Tag里，以便后面方便取出Tag
 				convertView.setTag(holder);
 			} else {
@@ -303,12 +290,6 @@ public class O2OSendover_activity extends ListActivity {
 					"shipper_name")
 					+ (String) data.get(position).get("shipper_phone");
 			holder.shipper_name_phone.setText(shipper_name_phone);
-			// String buyer_name_phone = (String) data.get(position).get(
-			// "buyer_name")
-			// + (String) data.get(position).get("buyer_phone");
-			// holder.buyer_name_phone.setText(buyer_name_phone);
-			// holder.buyer_address.setText((String) data.get(position).get(
-			// "buyer_address"));
 			holder.remarks.setText((String) data.get(position).get("remarks"));
 			holder.goods_type.setText((String) data.get(position).get(
 					"goods_type"));
@@ -331,55 +312,40 @@ public class O2OSendover_activity extends ListActivity {
 			} else {
 				holder.maijia_address.setText(adrString);
 			}
-			// holder.cargo_price.setText((String) data.get(position).get(
-			// "cargo_price"));
-			// holder.pay_shipper_fee.setText("应收客户￥"
-			// + (String) data.get(position).get("pay_shipper_fee"));
-			// holder.fetch_buyer_fee.setText("实收客户￥"
-			// + (String) data.get(position).get("fetch_buyer_fee"));
-			// holder.waybill_status.setText((String) data.get(position).get(
-			// "waybill_status"));
-			// if
-			// (data.get(position).get("waybill_status").toString().equals("5"))
-			// {
-			// holder.waybill_status.setText("配送完成");
-			// } else if (data.get(position).get("waybill_status").toString()
-			// .equals("e")) {
-			// holder.waybill_status.setText("异常件！");
-			// }
-			// switch (data.get(position).get("waybill_status").toString()) {
-			// case "0":
-			// holder.waybill_status.setText("待配送");
-			// break;
-			// case "1":
-			// holder.waybill_status.setText("取件配送");
-			// break;
-			// case "5":
-			// holder.waybill_status.setText("配送完成");
-			// break;
-			// case "e":
-			// holder.waybill_status.setText("异常件！");
-			// break;
-			//
-			// default:
-			// break;
-			// }
-			// holder.distance
-			// .setText((String) data.get(position).get("distance"));
-			// String isString = (String) data.get(position).get("is_booking");
-			// if (isString.equals("0")) {
-			// // 0代表实时订单
-			// holder.is_booking.setText("实");
-			// holder.is_booking.setBackgroundColor(getResources().getColor(
-			// R.color.orange));
-			// holder.order_time.setText("下单时间");
-			// } else {
-			// // 1代表预定订单
-			// holder.is_booking.setText("预");
-			// holder.is_booking.setBackgroundColor(getResources().getColor(
-			// R.color.yellow));
-			// holder.order_time.setText("预约时间");
-			// }
+			holder.complete_info.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					SharePrefUtil sp = new SharePrefUtil();
+					sp.saveString(O2OSendover_activity.this, "sp_x",
+							(String) data.get(position).get("sp_x"));
+					sp.saveString(O2OSendover_activity.this, "sp_y",
+							(String) data.get(position).get("sp_y"));
+					Intent intent = new Intent(O2OSendover_activity.this,
+							SendOver_order_detail.class);
+					Bundle bundle = new Bundle();
+					bundle.putInt("position", position);
+					bundle.putString("id", (String) data.get(position)
+							.get("id"));
+					bundle.putString("shipper_name", (String) data
+							.get(position).get("shipper_name"));
+					bundle.putString("shipper_address",
+							(String) data.get(position).get("shipper_address"));
+					bundle.putString("shipper_phone",
+							(String) data.get(position).get("shipper_phone"));
+					bundle.putString("goods_type", (String) data.get(position)
+							.get("goods_type"));
+					bundle.putString("remarks", (String) data.get(position)
+							.get("remarks"));
+					// bundle.putString("sp_x",
+					// (String) data.get(position).get("sp_x"));
+					// bundle.putString("sp_y",
+					// (String) data.get(position).get("sp_y"));
+					intent.putExtras(bundle);
+					startActivity(intent);
+				}
+			});
 			return convertView;
 		}
 
@@ -398,14 +364,7 @@ public class O2OSendover_activity extends ListActivity {
 			public TextView sender_name_phone; // 快递员姓名电话
 			public LinearLayout linearLayout_maijia_address;
 			public LinearLayout linearLayout_sender_name_phone;
-			// public TextView cargo_price; // 费用
-			// public TextView pay_shipper_fee; // 商家费用
-			// public TextView fetch_buyer_fee;// 用户费用
-			// public TextView handover_fee;
-			// public TextView waybill_status; // 上缴费用
-			// public TextView distance;// 距离
-			// public TextView order_time;// 下单/预约时间
-
+			public TextView complete_info;// 信息补录
 		}
 	}
 

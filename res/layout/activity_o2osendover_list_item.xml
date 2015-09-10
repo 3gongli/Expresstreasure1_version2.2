@@ -356,7 +356,7 @@
                     android:background="@color/black_868686" />
             </LinearLayout>
         </LinearLayout>
-        <!-- <TextView
+         <TextView
             android:id="@+id/complete_info"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
@@ -368,7 +368,7 @@
             android:gravity="center"
             android:text="信息补录"
             android:textColor="@color/white"
-            android:textSize="16sp" /> -->
+            android:textSize="16sp" /> 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

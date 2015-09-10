@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.http.NameValuePair;
-import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,6 +14,7 @@ import org.json.JSONObject;
 import android.annotation.SuppressLint;
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
@@ -53,6 +53,9 @@ public class O2OWaitsend_activity extends ListActivity {
 	static final int MENU_DISABLE_SCROLL = 1;
 	static final int MENU_SET_MODE = 2;
 	static final int MENU_DEMO = 3;
+
+	public static final String REFRESH_WAITSEND_LIST = "refresh_waitsend_list";
+
 	private PullToRefreshListView mPullRefreshListView;
 	Context mContext = O2OWaitsend_activity.this;
 	private PopupWindow mPopupMenu = null;
@@ -60,7 +63,7 @@ public class O2OWaitsend_activity extends ListActivity {
 	View btnsign_view;
 	public static String TotalNum = "";
 	public boolean isRefresh = false;
-	private String errors = "";
+	private static String errors = "";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -94,7 +97,9 @@ public class O2OWaitsend_activity extends ListActivity {
 	@Override
 	public void onResume() {
 		// 返回列表刷新数据
+
 		super.onResume();
+		new GetDataTask().execute();
 		MobclickAgent.onResume(this);
 	}
 
@@ -169,17 +174,9 @@ public class O2OWaitsend_activity extends ListActivity {
 										map.put("total_num", dt.getTotal_num());
 										map.put("create_time",
 												dt.getCreate_time());
-										// map.put("pay_shipper_fee",
-										// dt.getPay_shipper_fee());
-										// map.put("fetch_buyer_fee",
-										// dt.getFetch_buyer_fee());
+
 										map.put("id", dt.getId());
-										// map.put("distance",
-										// dt.getDistance());
-										// map.put("pay_type",
-										// dt.getPay_type());
-										// map.put("handover_fee",
-										// dt.getHandover_fee());
+
 										li.add(map);
 									}
 									DataManger.instance.setO2osendlist(li);
@@ -266,7 +263,8 @@ public class O2OWaitsend_activity extends ListActivity {
 		// data set.
 		// 获取一个在数据集中指定索引的视图来显示数据
 		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
+		public View getView(final int position, View convertView,
+				ViewGroup parent) {
 			intpositon = position;
 			ViewHolder holder;
 			// 如果缓存convertView为空，则需要创建View
@@ -297,18 +295,7 @@ public class O2OWaitsend_activity extends ListActivity {
 						.findViewById(R.id.linearLayout_sender_name_phone);
 				holder.linearLayout_maijia_address = (LinearLayout) convertView
 						.findViewById(R.id.linearLayout_maijia_address);
-				// holder.pay_shipper_fee = (TextView) convertView
-				// .findViewById(R.id.pay_shipper_fee);
-				// holder.fetch_buyer_fee = (TextView) convertView
-				// .findViewById(R.id.fetch_buyer_fee);
-				// holder.distance = (TextView) convertView
-				// .findViewById(R.id.distance);
-				// holder.order_time = (TextView) convertView
-				// .findViewById(R.id.order_time);
-				// holder.isonline = (LinearLayout) convertView
-				// .findViewById(R.id.isonline);
-				// holder.handover_fee = (TextView) convertView
-				// .findViewById(R.id.handover_fee);
+
 				// 将设置好的布局保存到缓存中，并将其设置在Tag里，以便后面方便取出Tag
 				convertView.setTag(holder);
 			} else {
@@ -346,90 +333,36 @@ public class O2OWaitsend_activity extends ListActivity {
 					"create_time"));
 			holder.goods_type.setText((String) data.get(position).get(
 					"goods_type"));
-			// holder.pay_shipper_fee.setText("￥"
-			// + (String) data.get(position).get("pay_shipper_fee"));
-			// holder.fetch_buyer_fee.setText("￥"
-			// + (String) data.get(position).get("fetch_buyer_fee"));
-			// holder.handover_fee.setText("￥"
-			// + (String) data.get(position).get("handover_fee"));
-			// holder.distance
-			// .setText((String) data.get(position).get("distance"));
-			// String isString = (String) data.get(position).get("is_booking");
-			// if (isString.equals("0")) {
-			// // 0代表实时订单
-			// holder.is_booking.setText("实");
-			// holder.is_booking.setBackgroundColor(getResources().getColor(
-			// R.color.orange));
-			// holder.order_time.setText("下单时间");
-			// } else {
-			// // 1代表预定订单
-			// holder.is_booking.setText("预");
-			// holder.is_booking.setBackgroundColor(getResources().getColor(
-			// R.color.yellow));
-			// holder.order_time.setText("预约时间");
-			// }
-			// String isOnline = (String) data.get(position).get("pay_type");
-			// if (isOnline.equals("1")) {
-			// // 1代表x线下支付
-			// holder.isonline.setVisibility(View.GONE);
-			//
-			// } else {
-			// // 2代表在线支付
-			// holder.isonline.setVisibility(View.VISIBLE);
-			// }
-
 			convertView.findViewById(R.id.take).setOnClickListener(
 					new OnClickListener() {
 
 						@Override
 						public void onClick(View view) {
 							btnsign_view = view;
-							// 取件
-							// 访问网络监察
-							new Thread(new Runnable() {
-								@Override
-								public void run() {
-									Httptool http = new Httptool();
-									JSONObject obj;
-									try {
-										String cid = DataManger.instance
-												.getCid();
-										String id = data.get(intpositon)
-												.get("id").toString();
-										Log.e(" id=========", id);
-										String status = "1";
-										List<NameValuePair> params = new ArrayList<NameValuePair>();
-										params.add(new BasicNameValuePair(
-												"cid", cid));
-										params.add(new BasicNameValuePair("id",
-												id));
-										params.add(new BasicNameValuePair(
-												"status", status));
-										obj = new JSONObject(http.httppost(
-												Urllist.handle_waybill, params));
-										if (obj.getString("success").equals(
-												"true")
-												&& obj.getString("errors")
-														.equals("OK")) {
-										} else {// 如果失败,输入失败的原因
-											errors = obj.getString("errors");
-											Message msg = new Message();
-											msg.what = 2;
-											handler.sendMessage(msg);
-											return;
-										}
+							Intent intent = new Intent(
+									O2OWaitsend_activity.this,
+									Camera_activity.class);
+							Bundle bundle = new Bundle();
+							bundle.putInt("position", position);
+							bundle.putString("id", (String) data.get(position)
+									.get("id"));
+							bundle.putString(
+									"shipper_name",
+									(String) data.get(position).get(
+											"shipper_name"));
+							bundle.putString("shipper_address", (String) data
+									.get(position).get("shipper_address"));
+							bundle.putString("shipper_phone", (String) data
+									.get(position).get("shipper_phone"));
+							bundle.putString(
+									"goods_type",
+									(String) data.get(position).get(
+											"goods_type"));
+							bundle.putString("remarks",
+									(String) data.get(position).get("remarks"));
 
-									} catch (JSONException e) {
-										e.printStackTrace();
-									} catch (ConnectTimeoutException e) {
-										e.printStackTrace();
-									}
-									Message msg = new Message();
-									msg.what = 3;
-									handler.sendMessage(msg);
-								}
-
-							}).start();
+							intent.putExtras(bundle);
+							startActivity(intent);
 
 						}
 					});
@@ -451,12 +384,6 @@ public class O2OWaitsend_activity extends ListActivity {
 			public TextView sender_name_phone; // 快递员姓名电话
 			public LinearLayout linearLayout_maijia_address;
 			public LinearLayout linearLayout_sender_name_phone;
-			// public TextView pay_shipper_fee; // 商家费用
-			// public TextView fetch_buyer_fee;// 用户费用
-			// public TextView handover_fee; // 上缴费用
-			// public TextView distance;// 距离
-			// public TextView order_time;// 下单/预约时间
-			// public LinearLayout isonline;// 在线支付
 
 		}
 	}
@@ -479,19 +406,6 @@ public class O2OWaitsend_activity extends ListActivity {
 				isRefresh = false;
 				O2O_activity.o2oactiviy.update("2");
 				break;
-			case 2:
-				Toast.makeText(O2OWaitsend_activity.this, errors,
-						Toast.LENGTH_LONG).show();
-				break;
-			case 3:
-				Toast.makeText(O2OWaitsend_activity.this, "取件成功！",
-						Toast.LENGTH_SHORT).show();
-				new GetDataTask().execute();
-				// Intent intent_refresh_take_radiobutton = new
-				// Intent(O2O_activity.ACTION_REFRESH_WAITSEND_REDIOBUTTON);
-				// sendBroadcast(intent_refresh_take_radiobutton);
-				// createMenu(btnsign_view);
-				break;
 			}
 		}
 
@@ -501,20 +415,6 @@ public class O2OWaitsend_activity extends ListActivity {
 			// 一个自定义的布局，作为显示的内容
 			View contentView = LayoutInflater.from(mContext).inflate(
 					R.layout.o2o_waitsend_popwindow, null);
-			// TextView true_price, price;
-			// true_price = (TextView)
-			// contentView.findViewById(R.id.true_price);
-			// price = (TextView) contentView.findViewById(R.id.price);
-			// List<Map<String, Object>>
-			// list=DataManger.instance.getO2osendlist();
-			// if (list != null) {
-			// //
-			// true_price.setText(list.get(intpositon).get("fetch_buyer_fee").toString());//
-			// 这里数组越界了 下次 打开的时候记得测试
-			// //
-			// price.setText("￥"+list.get(intpositon).get("fetch_buyer_fee").toString());
-			// //
-			// }
 
 			// 设置按钮的点击事件
 			contentView.findViewById(R.id.ok).setOnClickListener(
