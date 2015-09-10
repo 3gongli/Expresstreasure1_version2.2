@@ -1,3 +1,6 @@
+# view AndroidManifest.xml #generated:116
+-keep class com.baidu.location.f { <init>(...); }
+
 # view AndroidManifest.xml #generated:58
 -keep class com.dtr.zxing.activity.CaptureActivity { <init>(...); }
 
