@@ -27,7 +27,7 @@ import com.umeng.analytics.MobclickAgent;
 
 public class Statistical_activity extends Activity {
 	TextView total_shipper_fees, total_buyer_fees, total_pay_fees,
-			total_waybill, average_time, textTile;
+			total_waybill, average_time, textTile, total_goods_fees;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,7 @@ public class Statistical_activity extends Activity {
 		total_waybill = (TextView) findViewById(R.id.total_waybill);
 		average_time = (TextView) findViewById(R.id.average_time);
 		textTile = (TextView) findViewById(R.id.textTile);
+		total_goods_fees = (TextView) findViewById(R.id.total_goods_fees);
 		textTile.setText("今日配送情况");
 	}
 
@@ -104,7 +105,9 @@ public class Statistical_activity extends Activity {
 				total_buyer_fees.setText(DataManger.instance
 						.getTotal_buyer_fees());
 				total_pay_fees.setText(DataManger.instance.getTotal_pay_fees());
-				average_time.setText(DataManger.instance.getAverage_time());
+				total_goods_fees.setText(DataManger.instance
+						.getTotal_goods_fees());
+				// average_time.setText(DataManger.instance.getAverage_time());
 				break;
 			case 2:
 				Toast.makeText(Statistical_activity.this, "获取每日统计失败！",

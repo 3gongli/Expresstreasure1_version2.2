@@ -32,6 +32,7 @@ public class Jsontool {
 		DataManger.instance.setPage(json.getString("page"));// 页数
 		for (int i = 0; i < o2oarray.length(); i++) {
 			JSONObject jsobj = o2oarray.getJSONObject(i);
+			// Log.i("------------->", jsobj.toString());
 			DataManger dt = new DataManger();
 			dt.setCreate_time(jsobj.getString("create_time"));// 下单时间
 			// dt.setPay_shipper_fee(jsobj.getString("pay_shipper_fee"));// 商家费用
@@ -51,6 +52,8 @@ public class Jsontool {
 			dt.setGoods_num(jsobj.optString("cargo_num"));
 			dt.setGoods_type(jsobj.optString("cargo_type"));
 			dt.setTotal_num(jsobj.optString("waybill_num"));
+			dt.setSp_x(jsobj.optString("shipper_x"));
+			dt.setSp_y(jsobj.optString("shipper_y"));
 
 			// dt.setIs_topay(jsobj.getString("is_topay"));// 是否到付
 			// dt.setHandover_fee(jsobj.getString("handover_fee"));// 上缴费用
@@ -140,6 +143,7 @@ public class Jsontool {
 		DataManger.instance.setTotal_buyer_fees(data
 				.getString("total_buyer_fees"));
 		DataManger.instance.setTotal_pay_fees(data.getString("total_pay_fees"));
-		DataManger.instance.setAverage_time(data.getString("average_time"));
+		DataManger.instance.setTotal_goods_fees(data.getString("total_price"));
+		// DataManger.instance.setAverage_time(data.getString("average_time"));
 	}
 }

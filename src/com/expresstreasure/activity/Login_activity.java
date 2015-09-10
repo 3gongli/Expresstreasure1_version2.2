@@ -24,6 +24,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -68,10 +70,10 @@ public class Login_activity extends Activity {
 		TestinAgent.setLocalDebug(true);
 		setContentView(R.layout.activity_login);
 		// share.saveString(getApplicationContext(), "version_code", "3");
-
+		checkWifi();
 		// 启动线程,下载服务器版本,比较是否需要更新
 		new Thread(runn).start();
-		checkNetwork();
+		// checkNetwork();
 		SharedPreferences sp = this.getSharedPreferences("registered",
 				MODE_PRIVATE);
 		Log.d("SharedPreferences", "获取数据...");
@@ -98,22 +100,6 @@ public class Login_activity extends Activity {
 		btn = (Button) findViewById(R.id.submit);
 		phone.setText(share.getString(getApplicationContext(), "phone", null));
 		pass.setText(share.getString(getApplicationContext(), "pass", null));
-
-		// SharedPreferences sharedPreferences = this.getSharedPreferences(
-		// "share", MODE_PRIVATE);
-		// boolean isFourRun = sharedPreferences.getBoolean("isFourRun", true);
-		// Editor logineditor = sharedPreferences.edit();
-		// if (isFourRun) {
-		// logineditor.putBoolean("isFourRun", false);
-		// logineditor.putString("username", phone.getText().toString());
-		// logineditor.putString("userpass", pass.getText().toString());
-		//
-		// logineditor.commit();
-		// } else {
-		// phone.setText(sp.getString("username", null));
-		// pass.setText(sp.getString("userpass", null));
-		//
-		// }
 
 		btn.setOnClickListener(new OnClickListener() {
 
@@ -151,6 +137,9 @@ public class Login_activity extends Activity {
 												.getSharedPreferences(
 														"registered",
 														MODE_PRIVATE);
+										share.saveString(Login_activity.this,
+												"cid", obj.getJSONObject("obj")
+														.getString("id"));
 										Editor editor = sp.edit();
 										editor.putString("name",
 												String.valueOf(phone.getText()));
@@ -207,8 +196,12 @@ public class Login_activity extends Activity {
 												.getString("work_status")
 												.equals("1")) {
 											DataManger.instance.setIswork(true);
-											startService(new Intent(
-													My_activity.INTENT_ACTION));
+											// startService(new Intent(
+											// My_activity.INTENT_ACTION));
+											Intent intent = new Intent();
+											intent.setAction(My_activity.INTENT_ACTION);
+											intent.setPackage(getPackageName());
+											startService(intent);
 											share.saveString(
 													getApplicationContext(),
 													"work_status", "1");
@@ -477,6 +470,44 @@ public class Login_activity extends Activity {
 		// TODO Auto-generated method stub
 		super.onPause();
 		MobclickAgent.onPause(this);
+	}
+
+	public void checkWifi() {
+		ConnectivityManager connManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+		NetworkInfo mWifi = connManager
+				.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+		Log.i("-------->wifi", mWifi.isConnected() + "..");
+		if (!mWifi.isConnected()) {
+			Builder ab = new AlertDialog.Builder(this);
+			ab.setTitle("提示:");
+
+			ab.setMessage("请连接WiFi");
+			ab.setPositiveButton("设置", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					Intent intent = new Intent("android.settings.SETTINGS");
+					startActivityForResult(intent, 0);
+
+				}
+			});
+			ab.setNeutralButton("说明", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					Intent intent = new Intent(Login_activity.this,
+							WifiDescript.class);
+					startActivity(intent);
+					finish();
+				}
+			});
+			ab.setNegativeButton("退出", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					System.exit(0);
+				}
+			});
+			ab.show();
+
+		}
 	}
 
 }

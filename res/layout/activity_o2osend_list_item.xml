@@ -215,7 +215,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
-                android:text="物品数量:"
+                android:text="物品费用:"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 

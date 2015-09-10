@@ -24,6 +24,9 @@ import com.expresstreasure.tils.HttptoolGet;
 import com.expresstreasure.tils.Urllist;
 
 public class LocationService extends Service {
+
+	public static double thisX;
+	public static double thisY;
 	private static final String TAG = "LocalTestService";
 	private int i = 0;
 	private boolean work = false;
@@ -57,6 +60,7 @@ public class LocationService extends Service {
 	public void onStart(Intent intent, int startId) {
 		// TODO Auto-generated method stub
 		work = true;
+
 		Log.i(TAG, "LocalTestService--------onStart");
 	}
 
@@ -89,7 +93,7 @@ public class LocationService extends Service {
 		LocationClientOption option = new LocationClientOption();
 		option.setOpenGps(true);// 打开GPS
 		option.setCoorType("bd09ll");// 返回的定位结果是百度经纬度,默认值gcj02
-		option.setScanSpan(5000); // 设置发起定位请求的间隔时间为5000ms
+		option.setScanSpan(1000 * 60 * 1); // 设置发起定位请求的间隔时间为5000ms
 		option.setLocationMode(LocationMode.Hight_Accuracy);// 设置定位模式
 		// option.setIsNeedAddress(true);// 返回的定位结果包含地址信息
 		// option.setNeedDeviceDirect(true);// 返回的定位结果包含手机机头的方向
@@ -104,6 +108,7 @@ public class LocationService extends Service {
 
 			if (location == null) {
 				Log.i("LocationService", "定位失败");
+				Toast.makeText(getApplicationContext(), "失败", 0).show();
 				if (time > 0) {
 					mLocationClient.start();
 					time--;
@@ -118,18 +123,25 @@ public class LocationService extends Service {
 			} else {
 				Log.i("LocationService",
 						"获取到定位信息纬度：" + String.valueOf(location.getLatitude()));
+				thisX = location.getLatitude();
+
 				Log.i("LocationService",
 						"获取到定位信息经度：" + String.valueOf(location.getLongitude()));
+
+				thisY = location.getLongitude();
+
 				DataManger.instance.setLatitude((double) (location
 						.getLatitude()));// 纬度
 				DataManger.instance.setLongitude((double) (location
 						.getLongitude()));// 经度
-				if (System.currentTimeMillis() - lastTime > 5000) {
+				if (System.currentTimeMillis() - lastTime > 1000 * 60 * 1) {
 					Message msg = new Message();
 					msg.what = UPDATE_LOCATION_INFO;
 					handler.sendMessage(msg);
+					Log.i("LocationService", "111");
 				}
 				lastTime = System.currentTimeMillis();
+				Log.i("LocationService", lastTime + "");
 			}
 
 		}
@@ -140,7 +152,7 @@ public class LocationService extends Service {
 
 		public void run() {
 			if (work) {
-				handler.postDelayed(this, 5 * 60 * 1000);// 五分钟一次
+				// handler.postDelayed(this, 1 * 60 * 1000);// 五分钟一次
 				Message msg = new Message();
 				msg.what = BEGIN_LOCATION;
 				handler.sendMessage(msg);

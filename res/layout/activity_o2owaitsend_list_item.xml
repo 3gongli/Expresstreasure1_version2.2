@@ -216,7 +216,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
-                android:text="物品数量:"
+                android:text="物品费用:"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -357,200 +357,25 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- <LinearLayout
+        
+        <LinearLayout 
+            android:id="@+id/linearLayout_camera"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+            android:orientation="horizontal">
+            <!-- <Button 
+                android:id="@+id/button_camera"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="15dp"
-                android:text="配送距离:"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/distance"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:gravity="left"
-                    android:text=""
-                    android:textColor="@color/black_202020"
-                    android:textSize="14sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@color/black_868686" />
-            </LinearLayout>
-        </LinearLayout> -->
-
-        <!-- <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:gravity="center"
-                android:text="订单类型:"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/goods_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="15dp"
-                
-                android:maxLines="1"
-                android:paddingBottom="2dp"
-                android:paddingLeft="4dp"
-                android:paddingRight="4dp"
-                android:paddingTop="2dp"
-                android:text=""
-                android:textColor="@color/black_202020"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/order_time"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:gravity="center"
-                android:text="下单时间:"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/create_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:gravity="center"
-                android:singleLine="false"
-                android:text=" "
-                android:textColor="@color/black_202020"
-                android:textSize="16sp" />
-        </LinearLayout> -->
-
-        <!-- <LinearLayout
-            android:id="@+id/isonline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" >
-
-            <TextView
-                android:id="@+id/shipper"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
                 android:background="@color/online_text_ng"
-                android:paddingBottom="2dp"
-                android:paddingLeft="4dp"
-                android:paddingRight="4dp"
-                android:paddingTop="2dp"
-                android:text="在线"
+                android:text="去拍照"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/user"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="60dp"
-                android:background="@color/online_text_ng"
-                android:gravity="center"
-                android:maxLines="2"
-                android:paddingBottom="2dp"
-                android:paddingLeft="4dp"
-                android:paddingRight="4dp"
-                android:paddingTop="2dp"
-                android:text="在线"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
+            	android:textSize="18sp"/> -->
+            
+            
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="10dp" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="商家:"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/pay_shipper_fee"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:gravity="center_vertical"
-                android:maxLines="2"
-                android:text=""
-                android:textColor="@color/black_202020"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:gravity="center"
-                android:maxLines="2"
-                android:text="用户:"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/fetch_buyer_fee"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:gravity="center"
-                android:maxLines="2"
-                android:text=""
-                android:textColor="@color/black_202020"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:gravity="center"
-                android:maxLines="2"
-                android:text="上缴"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/handover_fee"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:gravity="center"
-                android:maxLines="2"
-                android:text=""
-                android:textColor="@color/black_202020"
-                android:textSize="14sp" />
-        </LinearLayout> -->
 
         <TextView
             android:id="@+id/take"
@@ -565,27 +390,7 @@
             android:text="取件"
             android:textColor="@color/white"
             android:textSize="18sp" />
-		<!-- <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" 
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="15dp"
-                android:text="备注:"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-			<EditText 
-			    android:id="@+id/beizhu:"
-			    android:layout_width="match_parent"
-			    android:layout_height="wrap_content"
-			    android:hint="dd"/>
-            <requestFocus />
-        </LinearLayout> -->
+		
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

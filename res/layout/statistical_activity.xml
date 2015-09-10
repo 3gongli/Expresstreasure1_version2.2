@@ -89,7 +89,29 @@
                 android:textColor="@color/text_4c4c4c"
                 android:textSize="16sp" />
         </LinearLayout>
+		<LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal" >
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="物品总金额:"
+                android:textColor="@color/text_4c4c4c"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/total_goods_fees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text=""
+                android:textColor="@color/text_4c4c4c"
+                android:textSize="16sp" />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

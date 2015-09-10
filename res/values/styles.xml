@@ -42,12 +42,22 @@
         <item name="android:singleLine">true</item>
         <item name="android:layout_weight">1.0</item>
     </style>
+    <style name="Dialog_Fullscreen"> 
 
-    <style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+      <item name="android:windowFullscreen">true</item> 
 
-        <!-- API 14 theme customizations can go here. -->
+      <item name="android:windowNoTitle">true</item>  
+
+    </style>  
+
+    <!-- <style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+
+        API 14 theme customizations can go here.
         <item name="android:windowTitleSize">50dip</item>
         <item name="android:windowTitleBackgroundStyle">@android:color/white</item>
-    </style>
+    </style> -->
+    
+    
+    
 
 </resources>

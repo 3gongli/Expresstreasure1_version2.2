@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">快送宝</string>
+    <string name="app_name">快送宝配送员</string>
 
     <string-array name="degrees">
         <item>亚马逊</item>
@@ -9,6 +9,7 @@
         <item>聚美优品</item>
     </string-array>
     <string name="degrees_prompt">请选择商家快递</string>
+    <string name="accept_order">我要接单</string>
     
 
 </resources>

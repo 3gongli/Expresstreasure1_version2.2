@@ -1,50 +1,68 @@
-# view AndroidManifest.xml #generated:58
+# view AndroidManifest.xml #generated:127
+-keep class com.baidu.location.f { <init>(...); }
+
+# view AndroidManifest.xml #generated:64
 -keep class com.dtr.zxing.activity.CaptureActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:63
+# view AndroidManifest.xml #generated:69
 -keep class com.dtr.zxing.activity.ResultActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:95
+# view AndroidManifest.xml #generated:119
+-keep class com.expresstreasure.activity.AboutUs_activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:118
+-keep class com.expresstreasure.activity.Camera_activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:103
 -keep class com.expresstreasure.activity.Error_activity { <init>(...); }
 
-# view AndroidManifest.xml #generated:77
+# view AndroidManifest.xml #generated:83
 -keep class com.expresstreasure.activity.Es_activity { <init>(...); }
 
-# view AndroidManifest.xml #generated:92
+# view AndroidManifest.xml #generated:98
 -keep class com.expresstreasure.activity.Essign_activity { <init>(...); }
 
-# view AndroidManifest.xml #generated:86
+# view AndroidManifest.xml #generated:92
 -keep class com.expresstreasure.activity.Estake_activity { <init>(...); }
 
-# view AndroidManifest.xml #generated:110
+# view AndroidManifest.xml #generated:121
 -keep class com.expresstreasure.activity.LocationService { <init>(...); }
 
-# view AndroidManifest.xml #generated:89
+# view AndroidManifest.xml #generated:95
 -keep class com.expresstreasure.activity.Login_activity { <init>(...); }
 
-# view AndroidManifest.xml #generated:54
+# view AndroidManifest.xml #generated:60
 -keep class com.expresstreasure.activity.MainActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:83
+# view AndroidManifest.xml #generated:44
+-keep class com.expresstreasure.activity.MyApplication { <init>(...); }
+
+# view AndroidManifest.xml #generated:89
 -keep class com.expresstreasure.activity.My_activity { <init>(...); }
 
-# view AndroidManifest.xml #generated:98
+# view AndroidManifest.xml #generated:106
 -keep class com.expresstreasure.activity.O2OSend_activity { <init>(...); }
 
-# view AndroidManifest.xml #generated:101
+# view AndroidManifest.xml #generated:109
 -keep class com.expresstreasure.activity.O2OSendover_activity { <init>(...); }
 
-# view AndroidManifest.xml #generated:104
+# view AndroidManifest.xml #generated:112
 -keep class com.expresstreasure.activity.O2OWaitsend_activity { <init>(...); }
 
-# view AndroidManifest.xml #generated:80
+# view AndroidManifest.xml #generated:86
 -keep class com.expresstreasure.activity.O2O_activity { <init>(...); }
 
-# view AndroidManifest.xml #generated:67
+# view AndroidManifest.xml #generated:120
+-keep class com.expresstreasure.activity.SendOver_order_detail { <init>(...); }
+
+# view AndroidManifest.xml #generated:73
 -keep class com.expresstreasure.activity.StartIndex { <init>(...); }
 
-# view AndroidManifest.xml #generated:107
+# view AndroidManifest.xml #generated:115
 -keep class com.expresstreasure.activity.Statistical_activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:101
+-keep class com.expresstreasure.activity.WifiDescript { <init>(...); }
 
 # view res/layout/activity_es_take.xml #generated:2
 # view res/layout/activity_o2o_list.xml #generated:2

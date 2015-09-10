@@ -33,6 +33,7 @@ public class My_activity extends Activity {
 	TextView name, phone, start, realname;
 	Button btnstart, btnstop;
 	TextView work;
+	TextView about_us;
 	private Throwable throwable = new Throwable();
 	int lat = 0;// 纬度
 	int lng = 0;// 经度
@@ -74,6 +75,19 @@ public class My_activity extends Activity {
 		btnstart = (Button) findViewById(R.id.start_work);
 		btnstop = (Button) findViewById(R.id.stop_work);
 		work = (TextView) findViewById(R.id.state);
+
+		about_us = (TextView) findViewById(R.id.about_us);
+		about_us.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(My_activity.this,
+						AboutUs_activity.class);
+				startActivity(intent);
+			}
+		});
+
 		Log.i("My_activity", "工作中" + DataManger.instance.getIswork());
 		if (DataManger.instance.getIswork()) {
 			work.setText("工作状态:工作中");
@@ -121,8 +135,12 @@ public class My_activity extends Activity {
 						@Override
 						public void run() {
 							if (!DataManger.instance.getIswork()) {
-								startService(new Intent(
-										My_activity.INTENT_ACTION));
+								Intent intent = new Intent();
+								intent.setAction(My_activity.INTENT_ACTION);
+								intent.setPackage(getPackageName());
+								startService(intent);
+								// startService(new Intent(
+								// My_activity.INTENT_ACTION));
 							} else {
 								Message msg = new Message();
 								msg.what = 3;// 已经开工
@@ -218,7 +236,10 @@ public class My_activity extends Activity {
 			// break;
 			case 2:
 				if (!DataManger.instance.getIswork()) {
-					stopService(new Intent(INTENT_ACTION));
+					Intent intent = new Intent();
+					intent.setAction(My_activity.INTENT_ACTION);
+					intent.setPackage(getPackageName());
+					stopService(intent);
 					btnstop.setBackgroundColor(getResources().getColor(
 							R.color.btn_bottom_textbgcolor));
 					btnstart.setBackgroundColor(getResources().getColor(

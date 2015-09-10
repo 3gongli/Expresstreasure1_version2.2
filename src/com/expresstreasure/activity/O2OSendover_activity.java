@@ -151,7 +151,8 @@ public class O2OSendover_activity extends ListActivity {
 												dt.getBuyer_phone());
 										map.put("buyer_address",
 												dt.getBuyer_address());
-										map.put("goods_num", dt.getGoods_num());
+										map.put("goods_num",
+												dt.getCargo_price());
 										map.put("total_num", dt.getTotal_num());
 										map.put("remarks", dt.getRemarks());
 										map.put("goods_type",

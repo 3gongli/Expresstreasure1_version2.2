@@ -53,6 +53,25 @@ public class DataManger {
 	private int totalCount; // o2o 当前页条数
 	private List<Map<String, Object>> o2osendlist;
 	private List<DataManger> O2OSend_list;
+	private String sp_x;
+
+	public String getSp_x() {
+		return sp_x;
+	}
+
+	public void setSp_x(String sp_x) {
+		this.sp_x = sp_x;
+	}
+
+	public String getSp_y() {
+		return sp_y;
+	}
+
+	public void setSp_y(String sp_y) {
+		this.sp_y = sp_y;
+	}
+
+	private String sp_y;
 
 	// 统计
 	private String total_shipper_fees;// 付给商家总费用
@@ -60,6 +79,15 @@ public class DataManger {
 	private String total_pay_fees;// 上缴费用
 	private String total_waybill;// 总单数
 	private String average_time;// 平均配送时间
+	private String total_goods_fees;// 物品总费用
+
+	public String getTotal_goods_fees() {
+		return total_goods_fees;
+	}
+
+	public void setTotal_goods_fees(String total_goods_fees) {
+		this.total_goods_fees = total_goods_fees;
+	}
 
 	// 每天统计电商
 	private String today_es_take = "0";// 电商取件配送

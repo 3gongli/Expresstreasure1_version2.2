@@ -23,5 +23,6 @@
     <color name="online_text_ng">#007EFF</color>
     <color name="sign_text_bg">#828282</color>
     <color name="saomiao_bg">#F0F0F0</color>
+    <color name="theme">#6b3590</color>
 
 </resources>

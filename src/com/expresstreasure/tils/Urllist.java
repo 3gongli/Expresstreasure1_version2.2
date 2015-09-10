@@ -5,6 +5,8 @@ public class Urllist {
 	public static final String HOST = "http://open.3gongli.com";
 	// 测试版
 	// public static final String HOST = "http://123.57.239.10:8080";
+	// 本机
+	// public static final String HOST = "http://119.40.9.37";
 	public static final String login = HOST + "/mobile/login";
 	public static final String scan_order = HOST + "/mobile/scan_order";
 	public static final String o2o_waitsend = HOST
@@ -26,4 +28,8 @@ public class Urllist {
 			+ "/api/courier_version";
 	public static final String sender_downloadnewversion = HOST
 			+ "/api/download/courier_app?v=";
+
+	public static final String uploadFile = HOST + "/mobile/upload_img";
+
+	public static final String completeInfo = HOST + "/mobile/makeup_buyinfo";
 }

@@ -9,5 +9,11 @@
 	<classpathentry kind="lib" path="libs/core-2.3.0.jar"/>
 	<classpathentry kind="lib" path="libs/testinagent.jar"/>
 	<classpathentry kind="lib" path="libs/umeng-analytics-v5.5.3.jar"/>
+	<classpathentry kind="lib" path="libs/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="libs/httpclient-4.2.5.jar"/>
+	<classpathentry kind="lib" path="libs/httpcore-4.2.4.jar"/>
+	<classpathentry kind="lib" path="libs/httpmime-4.2.5.jar"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="lib" path="C:/软件下载包/BaiduLBS_AndroidSDK_Lib (5)/libs/BaiduLBS_Android.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

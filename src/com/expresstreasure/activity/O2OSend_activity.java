@@ -168,7 +168,8 @@ public class O2OSend_activity extends ListActivity {
 										map.put("remarks", dt.getRemarks());
 										map.put("goods_type",
 												dt.getGoods_type());
-										map.put("goods_num", dt.getGoods_num());
+										map.put("goods_num",
+												dt.getCargo_price());
 										map.put("total_num", dt.getTotal_num());
 										map.put("create_time",
 												dt.getCreate_time());
